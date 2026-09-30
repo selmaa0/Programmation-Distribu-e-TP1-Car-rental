@@ -19,19 +19,13 @@ public class CarController {
         cars.add(new Car("77DD88", "Audi", 90));
     }
     
-    // Get list of all cars
     @GetMapping("/cars")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public List<Car> listOfCars() {
+    public List<Car> getAllCars() {
         return cars;
     }
 
-    // Get list of available (unrented) cars
     @GetMapping("/available-cars")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public List<Car> listOfAvailableCars() {
+    public List<Car> getAvailableCars() {
         List<Car> availableCars = new ArrayList<>();
         for (Car car : cars) {
             if (!car.isRented()) {
@@ -41,33 +35,27 @@ public class CarController {
         return availableCars;
     }
 
-    // Get features of a car using its plate number
     @GetMapping("/cars/{plateNumber}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public Car aCar(@PathVariable("plateNumber") String plateNumber) throws Exception {
+    public Car getCar(@PathVariable("plateNumber") String plateNumber) throws Exception {
         for (Car car : cars) {
             if (car.getPlateNumber().equals(plateNumber)) {
                 return car;
             }
         }
-        throw new Exception("Car not found with plate number: " + plateNumber);
+        throw new Exception("Car not found");
     }
     
-    // Rent or get back a car
-    @PutMapping(value = "/cars/{plateNumber}")
-    @ResponseStatus(HttpStatus.OK)
-    public void rentOrGetBack(
+    @PutMapping("/cars/{plateNumber}")
+    public void rentCar(
             @PathVariable("plateNumber") String plateNumber,
-            @RequestParam(value = "rent", required = true) boolean rent,
+            @RequestParam("rent") boolean rent,
             @RequestBody(required = false) Dates dates) throws Exception {
         
         Car car = findCar(plateNumber);
         
         if (rent) {
-            // Rent the car
             if (car.isRented()) {
-                throw new Exception("Car is already rented");
+                throw new Exception("Car already rented");
             }
             car.setRented(true);
             if (dates != null) {
@@ -75,9 +63,8 @@ public class CarController {
                 car.setRentalEnd(dates.getEnd());
             }
         } else {
-            // Get back the car
             if (!car.isRented()) {
-                throw new Exception("Car is not rented");
+                throw new Exception("Car not rented");
             }
             car.setRented(false);
             car.setRentalBegin(null);
@@ -91,6 +78,6 @@ public class CarController {
                 return car;
             }
         }
-        throw new Exception("Car not found with plate number: " + plateNumber);
+        throw new Exception("Car not found");
     }
 }
