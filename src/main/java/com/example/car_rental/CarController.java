@@ -27,11 +27,11 @@ public class CarController {
         return cars;
     }
 
-    // Get list of all cars
+    // Get list of available (unrented) cars
     @GetMapping("/available-cars")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<Car> listOfCars() {
+    public List<Car> listOfAvailableCars() {
         List<Car> availableCars = new ArrayList<>();
         for (Car car : cars) {
             if (!car.isRented()) {
