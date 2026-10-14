@@ -1,30 +1,29 @@
-package com.example.car_rental;
+package com.example.car_rental.service;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import com.example.car_rental.entity.Car;
+import com.example.car_rental.entity.Dates;
 
 import java.util.ArrayList;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
-@RestController
-public class CarController {
+@Service
+public class RentalService {
     
     private List<Car> cars = new ArrayList<>();
     
-    public CarController() {
-
+    public RentalService() {
+        // Initialize with sample data
         cars.add(new Car("11AA22", "Ferrari", 100));
         cars.add(new Car("33BB44", "BMW", 80));
         cars.add(new Car("55CC66", "Mercedes", 120));
         cars.add(new Car("77DD88", "Audi", 90));
     }
     
-    @GetMapping("/cars")
     public List<Car> getAllCars() {
-        return cars;
+        return new ArrayList<>(cars); // Return copy to prevent external modification
     }
-
-    @GetMapping("/available-cars")
+    
     public List<Car> getAvailableCars() {
         List<Car> availableCars = new ArrayList<>();
         for (Car car : cars) {
@@ -34,9 +33,8 @@ public class CarController {
         }
         return availableCars;
     }
-
-    @GetMapping("/cars/{plateNumber}")
-    public Car getCar(@PathVariable("plateNumber") String plateNumber) throws Exception {
+    
+    public Car getCarByPlateNumber(String plateNumber) throws Exception {
         for (Car car : cars) {
             if (car.getPlateNumber().equals(plateNumber)) {
                 return car;
@@ -45,12 +43,7 @@ public class CarController {
         throw new Exception("Car not found");
     }
     
-    @PutMapping("/cars/{plateNumber}")
-    public void rentCar(
-            @PathVariable("plateNumber") String plateNumber,
-            @RequestParam("rent") boolean rent,
-            @RequestBody(required = false) Dates dates) throws Exception {
-        
+    public void rentCar(String plateNumber, boolean rent, Dates dates) throws Exception {
         Car car = findCar(plateNumber);
         
         if (rent) {

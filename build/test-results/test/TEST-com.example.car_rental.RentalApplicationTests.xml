@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.car_rental.RentalApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-14T08:28:03.182Z" hostname="SLIMA" time="3.564">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.example.car_rental.RentalApplicationTests" time="0.965"/>
+  <system-out><![CDATA[10:28:03.457 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.car_rental.RentalApplicationTests]: RentalApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:28:03.588 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.car_rental.RentalApplication for test class com.example.car_rental.RentalApplicationTests
+10:28:03.702 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.car_rental.RentalApplicationTests]: RentalApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:28:03.704 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.car_rental.RentalApplication for test class com.example.car_rental.RentalApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-14T10:28:04.115+02:00  INFO 16772 --- [car-rental] [    Test worker] c.e.car_rental.RentalApplicationTests    : Starting RentalApplicationTests using Java 21.0.10 with PID 16772 (started by Salma in C:\Users\Salma\Downloads\car-rental\REST_TP)
+2026-10-14T10:28:04.117+02:00  INFO 16772 --- [car-rental] [    Test worker] c.e.car_rental.RentalApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2026-10-14T10:28:05.755+02:00  INFO 16772 --- [car-rental] [    Test worker] c.e.car_rental.RentalApplicationTests    : Started RentalApplicationTests in 1.973 seconds (process running for 3.838)
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\Salma\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.18.11\82212e5b3633e7a65fca8bec525762cfb6c9bae4\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
